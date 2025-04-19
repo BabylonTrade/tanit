@@ -1,25 +1,21 @@
-name: - name: Install dependencies
-  run: |
-    if [ -f package-lock.json ]; then
-      npm ci
-    else
-      echo "Warning: package-lock.json not found. Falling back to npm install."
-      npm install
-    fi 1000034534
-on: [push]
-
-permissions:
-  contents: read
+name: Deploy to Oxygen
+  
+    on:
+      push:
+    
+      permissions:
+contents: read
   deployments: write
-
+  
 jobs:
-  deploy:
-    name: Deploy to Oxygen
-    timeout-minutes: 30
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
+deploy:
+   name: Deploy to Oxygen
+   timeout-minutes: 30
+     runs-on: ubuntu-latest
+   steps:
+    -name: Checkoput respository
+ - uses: actions/checkout@v4
+ 
       - name: Setup node.js
         uses: actions/setup-node@v4
         with:
