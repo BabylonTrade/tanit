@@ -1,4 +1,11 @@
-name: Storefront 1000034534
+name: - name: Install dependencies
+  run: |
+    if [ -f package-lock.json ]; then
+      npm ci
+    else
+      echo "Warning: package-lock.json not found. Falling back to npm install."
+      npm install
+    fi 1000034534
 on: [push]
 
 permissions:
